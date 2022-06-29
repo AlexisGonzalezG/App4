@@ -20,7 +20,7 @@ class JokesViewModel @Inject constructor(
     private val _jokes:MutableLiveData<UIState> = MutableLiveData(UIState.LOADING)
     val jokes:LiveData<UIState> get() = _jokes
 
-    fun getJokes(uniqueId: Int = 20,firstName: String? = "David", lastName: String? = "Alexis"){
+    fun getJokes(uniqueId: Int = 1,firstName: String? = "David", lastName: String? = "Alexis"){
 
         CoroutineScope(Dispatchers.IO).launch{
 
