@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.app4.Model.Jokes
+import com.example.app4.databinding.ActivityMainBinding
 import com.example.app4.databinding.JokeItemBinding
 
 class JokesAdapter(
@@ -14,11 +15,17 @@ class JokesAdapter(
 
 ): RecyclerView.Adapter<JokersViewHolder>() {
 
-    fun updateNewJokes(newJokes: List<Jokes>){
+
+    fun anotherJoke(){
+        jokesSet.clear()
+    }
+
+
+    fun updateNewJokes(newJokes: Jokes){
         Log.d(ContentValues.TAG, "ALEXIS newJokes:" + newJokes)
 
         jokesSet.clear()
-        jokesSet.addAll(newJokes)
+        jokesSet.add(newJokes)
         notifyDataSetChanged()
         //notifyItemInserted(0)
 
@@ -38,6 +45,7 @@ class JokesAdapter(
         holder.bind(jokesSet[position],onJokeClicked)
 
     override fun getItemCount(): Int = jokesSet.size
+
 
 }
 

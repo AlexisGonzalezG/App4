@@ -1,20 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.JokeFragment">
+    tools:context=".views.JokeFragment"
+    android:orientation="horizontal">
 
-    <ProgressBar
-        android:id="@+id/loading_spinner"
+<!--    <ProgressBar-->
+<!--        android:id="@+id/loading_spinner"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content" />-->
+
+    <Button
+        android:id="@+id/btn_random"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="Random joke ! "
+        android:drawableLeft="@drawable/arrow_down"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/jokes_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
+        android:layout_below="@+id/btn_random"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
         />
 
-</FrameLayout>
+    <EditText
+        android:id="@+id/tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:layout_below="@+id/jokes_recycler"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+         />
+
+    <EditText
+        android:id="@+id/tv_lastname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Last name"
+        android:layout_below="@+id/tv_name"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        />
+
+    <Button
+        android:id="@+id/btn_random2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Give me a Joke ! "
+        android:layout_below="@+id/tv_lastname"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:drawableLeft="@drawable/arrow_up"
+        />
+
+    <Button
+        android:id="@+id/btn_random3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Never ending list ! "
+        android:layout_below="@+id/btn_random2"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:drawableLeft="@drawable/arrow_up"
+        />
+
+
+</RelativeLayout>

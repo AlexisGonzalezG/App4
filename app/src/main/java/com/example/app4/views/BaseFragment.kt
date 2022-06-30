@@ -7,7 +7,7 @@ import com.example.app4.viewmodel.JokesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-open class BaseFragment:Fragment() {
+open class BaseFragment: Fragment() {
 
     protected val jokesViewModel by lazy {
         ViewModelProvider(requireActivity())[JokesViewModel::class.java]

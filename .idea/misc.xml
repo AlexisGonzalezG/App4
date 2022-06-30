@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/arrow_down.xml" value="0.133" />
+        <entry key="app/src/main/res/drawable/arrow_up.xml" value="0.133" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2859375" />
         <entry key="app/src/main/res/layout/activity_main_random.xml" value="0.2859375" />
         <entry key="app/src/main/res/layout/card_item.xml" value="0.28489583333333335" />

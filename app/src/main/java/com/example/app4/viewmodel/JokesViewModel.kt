@@ -20,31 +20,15 @@ class JokesViewModel @Inject constructor(
     private val _jokes:MutableLiveData<UIState> = MutableLiveData(UIState.LOADING)
     val jokes:LiveData<UIState> get() = _jokes
 
-    fun getJokes(uniqueId: Int = 1,firstName: String? = "David", lastName: String? = "Alexis"){
-
+    fun getJokes(){
         CoroutineScope(Dispatchers.IO).launch{
-
-            delay(500)
-
             try {
-                Log.d(TAG, "ALEXIS getJokes:try")
-
-                val response = jokesRepository.getJoke(uniqueId,firstName,lastName)
-
-                Log.d(TAG, "ALEXIS getJokes:response"+response)
-
-
+                val response = jokesRepository.getJoke()
                 if(response.isSuccessful){
                     response.body()?.let {
-
-
                         withContext(Dispatchers.Main){
-
                             _jokes.value = UIState.SUCCESS(it)
-                            Log.d(TAG, "ALEXIS getJokes:"+_jokes.value)
-
                         }
-
                     } ?: throw Exception("ALEXIS DATA IS NULL")
                 }
                 else{
@@ -52,14 +36,60 @@ class JokesViewModel @Inject constructor(
                 }
             }
             catch (e: Exception){
-
-                Log.d(TAG, "ALEXIS getJokes:catch"+e)
-
-
                 withContext(Dispatchers.Main){
                     _jokes.postValue(UIState.ERROR(e))
                 }
+            }
 
+        }
+    }
+
+
+    fun getJokeNames(first_Name:String,last_Name:String){
+        CoroutineScope(Dispatchers.IO).launch{
+            try {
+
+                val response = jokesRepository.getJokeName(first_Name, last_Name)
+                if(response.isSuccessful){
+                    response.body()?.let {
+                        withContext(Dispatchers.Main){
+                            _jokes.value = UIState.SUCCESS(it)
+                        }
+                    } ?: throw Exception("ALEXIS DATA IS NULL")
+                }
+                else{
+                    throw Exception(response.errorBody()?.string())
+                }
+            }
+            catch (e: Exception){
+                withContext(Dispatchers.Main){
+                    _jokes.postValue(UIState.ERROR(e))
+                }
+            }
+
+        }
+    }
+
+    fun getJokesList20(){
+        CoroutineScope(Dispatchers.IO).launch{
+            try {
+
+                val response = jokesRepository.getJokeList20()
+                if(response.isSuccessful){
+                    response.body()?.let {
+                        withContext(Dispatchers.Main){
+                            _jokes.value = UIState.SUCCESS(it)
+                        }
+                    } ?: throw Exception("ALEXIS DATA IS NULL")
+                }
+                else{
+                    throw Exception(response.errorBody()?.string())
+                }
+            }
+            catch (e: Exception){
+                withContext(Dispatchers.Main){
+                    _jokes.postValue(UIState.ERROR(e))
+                }
             }
 
         }

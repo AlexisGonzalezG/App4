@@ -17,25 +17,23 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        //setContentView(R.layout.activity_main)
+        setContentView(binding.root)
+        show_fragment()
+    }
 
-        val btn_random : Button = findViewById(R.id.btn_random)
-
-        btn_random.setOnClickListener {
-            setContentView(binding.root)
+    fun show_fragment(){
 
 
-            val randomFragment_ = JokeFragment()
-            val fragment : Fragment?=
+        val randomFragment_ = JokeFragment()
+        val fragment : Fragment?=
 
             supportFragmentManager.findFragmentByTag(JokeFragment::class.java.simpleName)
 
-            if(fragment !is JokeFragment){
-                supportFragmentManager.beginTransaction()
-                    .add(R.id.LinearFragment_Container,randomFragment_,JokeFragment::class.java.simpleName)
-                    .commit()
-
-            }
+        if(fragment !is JokeFragment){
+            supportFragmentManager.beginTransaction()
+                .add(R.id.LinearFragment_Container,randomFragment_,JokeFragment::class.java.simpleName)
+                .commit()
 
         }
 
